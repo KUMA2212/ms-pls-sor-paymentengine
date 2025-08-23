@@ -5,8 +5,10 @@ spring:
   application:
     name: '@project.artifactId@'
 
-pls:
-  paymentengine:
-    url: '${GET_CUSTOMER_URL:https://api.razorpay.com/v1/customers/{customerId}}'
-    connTimeout: '${GET_CUSTOMER_CONN_TIMEOUT:10}'
-    readTimeOut: '${GET_CUSTOMER_READ_TIMEOUT:10}'
+razorpay:
+  properties:
+    getCustomerUrl: '${GET_CUSTOMER_URL:https://api.razorpay.com/v1/customers/{customerId}}'
+    connTimeout: '${CONN_TIMEOUT:10}'
+    readTimeOut: '${READ_TIMEOUT:10}'
+    mid: '${RAZORPAY_MID:rzp_test_CUu3Rc2XdX5FYc}'
+    midKey: '${RAZORPAY_MID_KEY:hwrOQ4XyfR8sZabniYLCifDA}'

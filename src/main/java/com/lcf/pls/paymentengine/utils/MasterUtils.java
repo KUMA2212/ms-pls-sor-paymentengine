@@ -100,4 +100,9 @@ public class MasterUtils {
     public static HttpEntity<Object> createRequest(Object obj, HttpHeaders httpHeaders) {
         return new HttpEntity<>(obj, httpHeaders);
     }
+    public static void validateCustomerId(String customerId) {
+        if (StringUtils.isEmpty(customerId)) {
+            throw new RuntimeException("customerId Cannot be empty");
+        }
+    }
 }

@@ -24,14 +24,13 @@ public class PaymentEngineController {
     private PgCustomerManagementService pgCustomerManagementService;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PaymentEngineController.class);
-
     @GetMapping(value = "/v1/payment/getPgCustomer/{customerId}", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<PgCustomerResponse> findPGCustomerById(@RequestHeader Map<String, String> headers, @PathVariable String customerId) {
-        LOGGER.info("customerId : {} ", customerId);
 
+        LOGGER.info("customerId : {} ", customerId);
+        MasterUtils.validateCustomerId(customerId);
         LCFRequestHeaders lcfHeaders = masterUtils.validateAndSetHeaders(headers);
         PgCustomerResponse response = pgCustomerManagementService.findPGCustomerById(customerId, lcfHeaders);
-
         return ResponseEntity.ok().body(response);
     }
 }

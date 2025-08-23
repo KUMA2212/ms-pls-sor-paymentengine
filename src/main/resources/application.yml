@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: '${APPLICATION_PROFILE_KEY: ALPHA}'
+    active: '${APPLICATION_PROFILE_KEY: LOCAL}'
     include:
 server:
       port: 8081

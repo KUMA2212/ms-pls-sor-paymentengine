@@ -2,6 +2,7 @@ package com.lcf.pls.paymentengine.manager;
 
 import com.lcf.pls.paymentengine.common.ApplicationConstants;
 import com.lcf.pls.paymentengine.dto.PgCustomerResponse;
+import com.lcf.pls.paymentengine.dto.RazorPayProperties;
 import com.lcf.pls.paymentengine.facade.PgCustomerManagementFacade;
 import com.lcf.pls.paymentengine.mapper.PgCustomerManagementMapper;
 import com.lcf.pls.paymentengine.schema.razorpay.request.PgCustomerRequestResponse;
@@ -20,21 +21,21 @@ public class PgCustomerManagementManager {
     private static final Logger LOGGER = LoggerFactory.getLogger(PgCustomerManagementManager.class);
 
     private PgCustomerManagementFacade pgCustomerManagementFacade;
+    private RazorPayProperties  razorPayProperties;
 
     public PgCustomerResponse findPGCustomerById(String customerId, LCFRequestHeaders requestHeaders) {
         String encodedToken = validateAndGetEncodedToken();
         LOGGER.info("encodedToken ::{}",encodedToken);
-        String customerUrl = "https://api.razorpay.com/v1/customers/";
-        String url = PgCustomerManagementMapper.createPgCustomerUrl(customerId, customerUrl);
+        String url = PgCustomerManagementMapper.createPgCustomerUrl(customerId, razorPayProperties.getGetCustomerUrl());
         LOGGER.info("URL ::{}",url);
-        PgCustomerRequestResponse pgCustomerRequestResponse = pgCustomerManagementFacade.getCustomer(url, requestHeaders, 10, 10,encodedToken);
+        PgCustomerRequestResponse pgCustomerRequestResponse = pgCustomerManagementFacade.getCustomer(url, requestHeaders, razorPayProperties.getConnTimeout(), razorPayProperties.getReadTimeout(),encodedToken);
         return PgCustomerManagementMapper.setPgCustomerResponse(pgCustomerRequestResponse);
     }
 
     private String validateAndGetEncodedToken() {
 
-        String mid = "rzp_test_CUu3Rc2XdX5FYc";
-        String midKey = "hwrOQ4XyfR8sZabniYLCifDA";
+        String mid = razorPayProperties.getMid();
+        String midKey = razorPayProperties.getMidKey();
 
         if (!ObjectUtils.isEmpty(mid) && !ObjectUtils.isEmpty(midKey)) {
             String apiKey = mid + ":" + midKey;
@@ -42,6 +43,5 @@ public class PgCustomerManagementManager {
         } else {
           throw new RuntimeException("mid");
         }
-
     }
 }
