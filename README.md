@@ -1,3 +1,3 @@
 # LibraryMgt
-This is Library Management project
+This is Payment Management project
 pravin kuklare
