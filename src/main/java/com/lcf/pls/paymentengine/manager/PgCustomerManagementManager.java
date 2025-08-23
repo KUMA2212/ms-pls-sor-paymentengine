@@ -23,12 +23,12 @@ public class PgCustomerManagementManager {
     private PgCustomerManagementFacade pgCustomerManagementFacade;
     private RazorPayProperties  razorPayProperties;
 
-    public PgCustomerResponse findPGCustomerById(String customerId, LCFRequestHeaders requestHeaders) {
+    public PgCustomerResponse findPGCustomerById(String customerId ) {
         String encodedToken = validateAndGetEncodedToken();
         LOGGER.info("encodedToken ::{}",encodedToken);
         String url = PgCustomerManagementMapper.createPgCustomerUrl(customerId, razorPayProperties.getGetCustomerUrl());
         LOGGER.info("URL ::{}",url);
-        PgCustomerRequestResponse pgCustomerRequestResponse = pgCustomerManagementFacade.getCustomer(url, requestHeaders, razorPayProperties.getConnTimeout(), razorPayProperties.getReadTimeout(),encodedToken);
+        PgCustomerRequestResponse pgCustomerRequestResponse = pgCustomerManagementFacade.getRpCustomer(url, razorPayProperties.getConnTimeout(), razorPayProperties.getReadTimeout(),encodedToken);
         return PgCustomerManagementMapper.setPgCustomerResponse(pgCustomerRequestResponse);
     }
 

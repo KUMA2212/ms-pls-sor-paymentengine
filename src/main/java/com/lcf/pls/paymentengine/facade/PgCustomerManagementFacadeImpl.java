@@ -18,7 +18,7 @@ import org.springframework.web.client.RestTemplate;
 public class PgCustomerManagementFacadeImpl implements PgCustomerManagementFacade{
     private RestTemplate restTemplate;
 
-   public PgCustomerRequestResponse getCustomer(String url, LCFRequestHeaders requestHeaders ,int connTimeOut,int readTimeOut,String encodedToken){
+   public PgCustomerRequestResponse getRpCustomer(String url,int connTimeOut,int readTimeOut,String encodedToken){
       String response =null;
        PgCustomerRequestResponse pgCustomerRequestResponse =null;
        try {
@@ -28,7 +28,7 @@ public class PgCustomerManagementFacadeImpl implements PgCustomerManagementFacad
            headers.add(ApplicationConstants.AUTHORIZATION, encodedToken);
 
            response = (String) RestCallChecker.callRestGetDataService(url,
-                   MasterUtils.createRequest("getCustomerDetails", headers), String.class, restTemplate, connTimeOut, readTimeOut);
+                   MasterUtils.createRequest("getRazorPayCustomerDetails", headers), String.class, restTemplate, connTimeOut, readTimeOut);
 
            pgCustomerRequestResponse =  new ObjectMapper().readValue(response, PgCustomerRequestResponse.class);
            return pgCustomerRequestResponse;

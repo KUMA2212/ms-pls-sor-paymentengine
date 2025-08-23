@@ -4,6 +4,6 @@ import com.lcf.pls.paymentengine.schema.razorpay.request.PgCustomerRequestRespon
 import com.lcf.pls.paymentengine.utils.LCFRequestHeaders;
 
 public interface PgCustomerManagementFacade {
-     PgCustomerRequestResponse getCustomer(String url, LCFRequestHeaders requestHeaders ,int connTimeOut,int readTimeOut ,String encodedToken);
+     PgCustomerRequestResponse getRpCustomer(String url ,int connTimeOut,int readTimeOut ,String encodedToken);
 
 }

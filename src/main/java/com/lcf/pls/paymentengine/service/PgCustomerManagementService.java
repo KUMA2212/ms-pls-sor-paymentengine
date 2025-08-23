@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class PgCustomerManagementService {
 private PgCustomerManagementManager pgCustomerManagementManager;
 
-    public PgCustomerResponse findPGCustomerById(String customerId, LCFRequestHeaders requestHeaders) {
-        return  pgCustomerManagementManager.findPGCustomerById(customerId,requestHeaders);
+    public PgCustomerResponse findPGCustomerById(String customerId) {
+        return  pgCustomerManagementManager.findPGCustomerById(customerId);
     }
 }
