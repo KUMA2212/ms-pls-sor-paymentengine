@@ -1,0 +1,12 @@
+spring:
+  config:
+      activate:
+        on-profile: LOCAL
+  application:
+    name: '@project.artifactId@'
+
+pls:
+  paymentengine:
+    url: '${GET_CUSTOMER_URL:https://api.razorpay.com/v1/customers/{customerId}}'
+    connTimeout: '${GET_CUSTOMER_CONN_TIMEOUT:10}'
+    readTimeOut: '${GET_CUSTOMER_READ_TIMEOUT:10}'

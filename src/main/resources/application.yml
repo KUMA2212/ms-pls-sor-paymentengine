@@ -1,0 +1,6 @@
+spring:
+  profiles:
+    active: '${APPLICATION_PROFILE_KEY: ALPHA}'
+    include:
+server:
+      port: 8081
