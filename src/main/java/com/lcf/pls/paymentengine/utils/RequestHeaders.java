@@ -7,7 +7,7 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-public class LCFRequestHeaders {
+public class RequestHeaders {
 
     private String authorization;
     private String contentType;

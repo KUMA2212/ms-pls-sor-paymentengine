@@ -7,8 +7,19 @@ spring:
 
 razorpay:
   properties:
-    getCustomerUrl: '${GET_CUSTOMER_URL:https://api.razorpay.com/v1/customers/{customerId}}'
     connTimeout: '${CONN_TIMEOUT:10}'
     readTimeOut: '${READ_TIMEOUT:10}'
     mid: '${RAZORPAY_MID:rzp_test_CUu3Rc2XdX5FYc}'
     midKey: '${RAZORPAY_MID_KEY:hwrOQ4XyfR8sZabniYLCifDA}'
+    url: '${RAZORPAY_BASE_URL:https://api.razorpay.com}'
+
+    createPgCustomerUrl: '${CREATE_CUSTOMER_URL:/v1/customers}'
+    createPgOrderUrl: '${CREATE_ORDER_URL:/v1/orders}'
+    createRefundUrl: '${CREATE_REFUND_URL:/v1/payments/{paymentId}/refund}'
+
+    getPgCustomerUrl: '${GET_CUSTOMER_URL:/v1/customers/{customerId}}'
+    getPgRefundUrl: '${GET_REFUND_URL:/v1/refunds/{refundId}}'
+    getPgPaymentUrl: '${GET_PAYMENT_URL :/v1/payments/{paymentId}}'
+    getPgOrderUrl: '${CREATE_ORDER_URL:/v1/orders/{orderId}}'
+    createPaymentLinkUrl: '${CREATE_PAYMENT_URL:/v1/payment_links/}'
+    getPgPaymentLinkUrl: '${GET_PAYMENT_LINK_URL :/v1/payment_links/{paymentLinkId}}'

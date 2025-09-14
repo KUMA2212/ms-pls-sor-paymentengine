@@ -1,0 +1,17 @@
+{
+  "id": "rfnd_FP8QHiV938haTz",
+  "entity": "refund",
+  "amount": 500100,
+  "currency": "INR",
+  "payment_id": "pay_29QQoUBi66xm2f",
+  "notes": [],
+  "receipt": "1234",
+  "acquirer_data": {
+    "arn": "12345"
+  },
+  "created_at": 1597078866,
+  "batch_id": "1234",
+  "status": "processed",
+  "speed_processed": "normal",
+  "speed_requested": "normal"
+}

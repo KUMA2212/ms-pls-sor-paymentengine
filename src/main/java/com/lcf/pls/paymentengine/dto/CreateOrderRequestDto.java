@@ -1,4 +1,5 @@
-package com.lcf.pls.paymentengine.models;
+package com.lcf.pls.paymentengine.dto;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -8,21 +9,22 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.io.Serializable;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Setter
 @Getter
+@Setter
 @ToString
 @EqualsAndHashCode
-public class AmountType implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class CreateOrderRequestDto {
 
     @JsonProperty("amount")
-    private Double amount;
+    private Integer amount;
 
-    @JsonProperty("units")
-    private String units;
+    @JsonProperty("currency")
+    private String currency;
+
+    @JsonProperty("receipt")
+    private String receipt;
 
 }

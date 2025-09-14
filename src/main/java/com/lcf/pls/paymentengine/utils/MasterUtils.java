@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
 @Component
 public class MasterUtils {
 
@@ -24,10 +25,10 @@ public class MasterUtils {
     }
 
 
-    public LCFRequestHeaders validateAndSetHeaders(Map<String, String> headers) {
+    public RequestHeaders validateAndSetHeaders(Map<String, String> headers) {
         List<String> mandatoryHeaderList = this.getMandatoryHeaders();
         Map<String, String> upperCaseNameKeyHeaders = getUpperCaseMapKeys(headers);
-        LCFRequestHeaders requestHeaders = new LCFRequestHeaders();
+        RequestHeaders requestHeaders = new RequestHeaders();
         mandatoryHeaderList.forEach((mandatoryHeader) -> {
 
             switch (mandatoryHeader) {
@@ -50,8 +51,9 @@ public class MasterUtils {
         });
         return requestHeaders;
     }
+
     public String getAuthorization(Map<String, String> headers, String headerName) {
-        return (String)headers.get(headerName);
+        return (String) headers.get(headerName);
     }
 
     public String validateContentType(Map<String, String> headers, String headerName) {
@@ -64,7 +66,7 @@ public class MasterUtils {
     }
 
     public String validateChannel(Map<String, String> headers, String headerName) {
-        String channel = (String)headers.get(headerName);
+        String channel = (String) headers.get(headerName);
         if (StringUtils.isEmpty(channel)) {
             throw new RuntimeException();
         } else {
@@ -93,16 +95,12 @@ public class MasterUtils {
             return pinCodeId;
         }
     }
+
     public static Map<String, String> getUpperCaseMapKeys(Map<String, String> map) {
-        return (Map)map.entrySet().stream().filter((e) -> e.getKey() != null).collect(Collectors.toMap((e) -> String.valueOf(((String)e.getKey()).toUpperCase()), (e) -> String.valueOf(e.getValue())));
+        return (Map) map.entrySet().stream().filter((e) -> e.getKey() != null).collect(Collectors.toMap((e) -> String.valueOf(((String) e.getKey()).toUpperCase()), (e) -> String.valueOf(e.getValue())));
     }
 
     public static HttpEntity<Object> createRequest(Object obj, HttpHeaders httpHeaders) {
         return new HttpEntity<>(obj, httpHeaders);
-    }
-    public static void validateCustomerId(String customerId) {
-        if (StringUtils.isEmpty(customerId)) {
-            throw new RuntimeException("customerId Cannot be empty");
-        }
     }
 }

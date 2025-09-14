@@ -9,15 +9,20 @@ import org.springframework.web.client.RestTemplate;
 
 public final class RestCallChecker {
 
-    public static <T> Object callRestGetDataService(String url, HttpEntity<Object> createRequest, Class<T> responseClass,
-                                                    RestTemplate restTemplate, int connTimeout, int readTimeout) {
+    public static <T> Object callRestGetService(String url, HttpEntity<Object> createRequest, Class<T> responseClass,
+                                                RestTemplate restTemplate, int connTimeout, int readTimeout) {
         ResponseEntity<T> response = null;
 
-//        restTemplate.setRequestFactory(new BufferingClientHttpRequestFactory(
-//                setRestTimeoutData(connTimeout, readTimeout)));
-                response = restTemplate.exchange(url, HttpMethod.GET, createRequest, responseClass);
+        response = restTemplate.exchange(url, HttpMethod.GET, createRequest, responseClass);
 
         return response.getBody();
+    }
+
+    public static <T> Object callRestPostService(String url, HttpEntity<Object> createRequest, Class<T> responseClass,
+                                                 RestTemplate restTemplate, int connTimeout, int readTimeout) {
+        T response = null;
+        response = restTemplate.postForObject(url, createRequest, responseClass);
+        return response;
     }
 
     public static HttpComponentsClientHttpRequestFactory setRestTimeoutData(int connTimeOut, int readTimeOut) {
