@@ -1,0 +1,13 @@
+spring:
+  config:
+      activate:
+        on-profile: LOCAL
+  application:
+    name: '@project.artifactId@'
+
+gateway:
+  properties:
+    connTimeout: '${CONN_TIMEOUT:10}'
+    readTimeOut: '${READ_TIMEOUT:10}'
+    createPaymentLinkUrl: '${CREATE_PAYMENT_URL:http://localhost:8081/pls/sor/paymentengine/v1/gateway/createPgPaymentLink}'
+    paymentLinkUrl: '${PAYMENT_LINK_URL :http://localhost:8081/pls/sor/paymentengine/v1/gateway/getPgPaymentLink/{paymentLinkId}}'

@@ -1,0 +1,13 @@
+spring:
+  config:
+    activate:
+      on-profile: ALPHA
+  application:
+    name: '@project.artifactId@'
+
+gateway:
+  properties:
+    connTimeout: '${CONN_TIMEOUT}'
+    readTimeOut: '${READ_TIMEOUT}'
+    createPaymentLinkUrl: '${CREATE_PAYMENT_URL}'
+    getPgPaymentLinkUrl: '${GET_PAYMENT_LINK_URL}'
