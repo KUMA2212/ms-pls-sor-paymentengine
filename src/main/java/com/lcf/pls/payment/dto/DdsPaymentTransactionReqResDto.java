@@ -1,11 +1,11 @@
-package com.lcf.pls.paymentengine.dto;
+package com.lcf.pls.payment.dto;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.lcf.pls.paymentengine.schema.razorpay.request.Customer;
-import com.lcf.pls.paymentengine.schema.razorpay.request.Notify;
+import com.lcf.pls.payment.schema.razorpay.request.Customer;
+import com.lcf.pls.payment.schema.razorpay.request.Notify;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,7 +18,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @EqualsAndHashCode
-public class CreatePaymentLinkReqResDto {
+public class DdsPaymentTransactionReqResDto {
 
     @JsonProperty("amount")
     private Integer amount;
@@ -50,11 +50,17 @@ public class CreatePaymentLinkReqResDto {
     @JsonProperty("callbackMethod")
     private String callbackMethod;
 
-    @JsonProperty("customer")
-    private Customer customer;
+    @JsonProperty("emailId")
+    private String emailId;
+
+    @JsonProperty("customerName")
+    private String customerName;
+
+    @JsonProperty("mobileNo")
+    private String mobileNo;
 
     @JsonProperty("notify")
-    private Notify notify;
+    private Notification notify;
 
     @JsonProperty("amountPaid")
     private String amountPaid;

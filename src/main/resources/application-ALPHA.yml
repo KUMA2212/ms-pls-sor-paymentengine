@@ -5,20 +5,9 @@ spring:
   application:
     name: '@project.artifactId@'
 
-razorpay:
+gateway:
   properties:
-
     connTimeout: '${CONN_TIMEOUT}'
     readTimeOut: '${READ_TIMEOUT}'
-    mid: '${RAZORPAY_MID}'
-    midKey: '${RAZORPAY_MID_KEY}'
-    url: '${RAZORPAY_BASE_URL}'
-    createPgCustomerUrl: '${CREATE_CUSTOMER_URL}'
-    createPgOrderUrl: '${CREATE_ORDER_URL}'
-    createRefundUrl: '${CREATE_REFUND_URL}'
-    getPgCustomerUrl: '${GET_CUSTOMER_URL}'
-    getPgRefundUrl: '${GET_REFUND_URL}'
-    getPgPaymentUrl: '${GET_PAYMENT_URL}'
-    getPgOrderUrl: '${CREATE_ORDER_URL}'
     createPaymentLinkUrl: '${CREATE_PAYMENT_URL}'
     getPgPaymentLinkUrl: '${GET_PAYMENT_LINK_URL}'

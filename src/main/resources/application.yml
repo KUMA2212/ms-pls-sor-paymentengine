@@ -3,4 +3,4 @@ spring:
     active: '${APPLICATION_PROFILE_KEY: LOCAL}'
     include:
 server:
-      port: 8081
+      port: 8080
